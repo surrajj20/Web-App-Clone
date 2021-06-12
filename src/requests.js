@@ -1,5 +1,5 @@
 require("dotenv").config();
-const API_KEY = "7a6bceecb523a6d2614a144f65280ff2"
+const API_KEY = ""
 
 const requests = {
     fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
