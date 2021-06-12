@@ -11,6 +11,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
+require("dotenv").config();
 
 function App() {
 
