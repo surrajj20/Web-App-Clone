@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.png';
-import logo2 from './logo2.png';
+import profile_logo from './profile-logo.png';
 import './Nav.css';
+import Netflix_logo from "./netflix-logo.png";
+import { useHistory } from "react-router-dom";
 
 function Nav() {
     const [show, handleShow] = useState(false);
+    const history = useHistory();
+
+
+    const transitionNavBar = () => {
+        if (window.scrollY > 100) {
+            handleShow(true);
+        } else {
+            handleShow(false);
+        }
+    }
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 100) {
-                handleShow(true);
-
-            } else handleShow(false);
-        });
-        return () => {
-            window.removeEventListener("scroll");
-        };
+        window.addEventListener("scroll", transitionNavBar);
+        return () => window.removeEventListener("scroll", transitionNavBar);
     }, []);
 
     return (
         <div className={`nav ${show && "nav__black"}`}>
-            <img className="nav__logo" src={logo} alt="Netflix Logo" />
-            <img className="nav__avatar" src={logo2} alt="Netflix Avatar" />
+            <img onClick={() => history.push("/")} className="nav__logo" src={Netflix_logo} alt="Netflix Logo" />
+            <img onClick={() => history.push("/profile")} className="nav__avatar" src={profile_logo} alt="Netflix Avatar" />
 
         </div>
     )
